@@ -7,24 +7,40 @@ function createWindow() {
     height: 600,
     webPreferences: {
       nodeIntegration: false,
-      contextIsolation: true
+      contextIsolation: true,
+      preload: path.join(__dirname, 'preload.js'), // Ensure preload exists
+      sandbox: true // Enable sandboxing
     },
     frame: true,
     titleBarStyle: 'default',
     resizable: true
   })
 
-  // Remove menu bar for all platforms
-  Menu.setApplicationMenu(null)
+  // Configure menu properly
+  const menuTemplate = process.platform === 'darwin' ? [{
+    label: app.name,
+    submenu: [
+      { role: 'about' },
+      { type: 'separator' },
+      { role: 'quit' }
+    ]
+  }] : []
+  
+  const menu = Menu.buildFromTemplate(menuTemplate)
+  Menu.setApplicationMenu(menu)
 
-  // Special handling for macOS
-  if (process.platform === 'darwin') {
-    const template = []
-    const menu = Menu.buildFromTemplate(template)
-    Menu.setApplicationMenu(menu)
+  // Load index.html with proper path handling
+  win.loadFile(path.join(__dirname, 'index.html'))
+  
+  // Open DevTools only in development
+  if (process.env.NODE_ENV === 'development') {
+    win.webContents.openDevTools()
   }
-
-  win.loadFile('index.html')
 }
 
 app.whenReady().then(createWindow)
+
+// Quit when all windows are closed
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') app.quit()
+})

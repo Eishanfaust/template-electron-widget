@@ -1,0 +1,37 @@
+/* buttons.css */
+.controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 0 15px;
+}
+
+.game-btn {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.9em;
+    flex-shrink: 0;
+}
+
+.game-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.settings-btn {
+    background: #6c757d;
+}
+
+.reset-btn {
+    background: #ff3b30;
+}
+
+.leaderboards-btn {
+    background: #34c759;
+}
+
+.hidden {
+    display: none !important;
+}

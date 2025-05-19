@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>Game Application</title>
-    <link rel="stylesheet" href="./src/styles/main.css">
-</head>
-<body>
-    <div class="content-container">
-        <div class="top-section">
-            <h1>Game Header</h1>
-        </div>
+    <head>
+        <meta charset="UTF-8">
+        <title>Game Application</title>
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';">
+        <link rel="stylesheet" href="src/styles/main.css">
+        <link rel="stylesheet" href="src/styles/gameboard.css">
+        <link rel="stylesheet" href="src/styles/buttons.css">
+        <script type="module" src="src/scripts/renderer.js"></script>
+    </head>
+    <body>
         <div class="middle-section">
             <div class="game-board">
-                <!-- Game content here -->
+                <!-- Game cells injected here -->
+            </div>
+            <div class="settings-panel hidden">
+                <!-- Settings content -->
             </div>
         </div>
         <div class="bottom-section">
             <div class="controls">
-                <!-- Control buttons here -->
+                <!-- Buttons injected here -->
             </div>
         </div>
-    </div>
-</body>
+    </body>
 </html>

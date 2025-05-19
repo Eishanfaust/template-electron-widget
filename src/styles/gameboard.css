@@ -1,20 +1,53 @@
+/* gameboard.css */
 .game-board {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
-    width: 90%;
-    aspect-ratio: 1/1;
+    width: 95vmin;
+    height: 95vmin;
+    max-width: 95%;
+    max-height: 95%;
     margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    aspect-ratio: 1/1;
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 15px;
+    box-sizing: border-box;
 }
 
 .cell {
-    background: #ffffff;
+    /* Existing cell styles remain */
+    background: #f8f9fa;
     border: 2px solid #e0e0e0;
     border-radius: 8px;
     aspect-ratio: 1/1;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2.5em;
-    cursor: default;
+    font-size: 2em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.cell:hover {
+    background: #e9ecef;
+    transform: scale(1.05);
+}
+
+.settings-panel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    width: 90%;
+    max-width: 500px;
+    z-index: 3; /* Above both gameboard and buttons */
 }
