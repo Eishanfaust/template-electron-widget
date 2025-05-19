@@ -50,12 +50,12 @@
 
 /* Form Elements */
 .settings-select {
-    width: 100%;
+    width: 90%;
     padding: 0.8rem;
     border: 2px solid #e2e8f0;
     border-radius: 6px;
     background: white;
-    font-size: 1rem;
+    font-size: 0.5rem;
     transition: border-color 0.2s ease;
 }
 
@@ -65,7 +65,7 @@
 }
 
 .settings-input {
-    width: 100%;
+    width: 80%;
     padding: 0.8rem;
     border: 2px solid #e2e8f0;
     border-radius: 6px;
@@ -81,13 +81,13 @@
 /* Theme Switcher */
 .theme-switch {
     display: flex;
-    gap: 10px;
+    gap: 7px;
     margin-top: 1rem;
 }
 
 .theme-btn {
     flex: 1;
-    padding: 12px;
+    padding: 2x;
     border: 2px solid transparent;
     border-radius: 8px;
     cursor: pointer;
@@ -163,7 +163,87 @@
     border-color: #63b3ed;
     background: #2b6cb0;
 }
+/* Add to panels.css */
+/* Global Dark Mode */
+body.dark-mode {
+    background: #1a1a1a;
+    color: #e0e0e0;
+}
 
+body.dark-mode .game-container {
+    background: #2d2d2d;
+    color: #e0e0e0;
+}
+
+/* Side Panel Text Sizing */
+.side-panel {
+    font-size: 0.9em; /* Reduced from 1em */
+}
+
+.side-panel h2 {
+    font-size: 1.4em; /* Reduced from 1.8em */
+    margin-bottom: 1.2rem;
+}
+
+/* Game Board Cells */
+.game-board {
+    /* Existing styles... */
+    font-size: 1.8em; /* Reduced from 2.5em */
+}
+
+.cell {
+    /* Existing styles... */
+    font-size: 1.6em; /* Reduced cell content size */
+}
+
+/* Dark Mode Text Contrast */
+body.dark-mode .settings-group label,
+body.dark-mode .leaderboard-entry {
+    color: #d0d0d0;
+}
+
+body.dark-mode .settings-select,
+body.dark-mode .settings-input {
+    color: #f0f0f0;
+}
+
+/* Form Elements in Dark Mode */
+body.dark-mode .settings-select,
+body.dark-mode .settings-input {
+    background: #404040;
+    border-color: #555;
+}
+
+body.dark-mode .theme-btn:not(.active) {
+    background: #505050;
+}
+
+/* Game Board in Dark Mode */
+body.dark-mode .game-board {
+    background: #333;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+body.dark-mode .cell {
+    background: #404040;
+    border-color: #666;
+}
+
+/* Smaller Side Panel Elements */
+.settings-group {
+    font-size: 0.95em;
+}
+
+.settings-select,
+.settings-input {
+    font-size: 0.9em;
+    padding: 0.6rem 0.8rem;
+}
+
+.theme-btn {
+    font-size: 0.85em;
+    padding: 0.8rem;
+}
 /* Responsive Design */
 @media (max-width: 768px) {
     .side-panel {
