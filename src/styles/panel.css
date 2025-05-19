@@ -22,14 +22,16 @@
     transform: translateY(0);
     max-height: 1000px; /* Arbitrary large value for transition */
 }
-
+.settings-panel:not(.hidden) {
+    display: block;
+}
 /* Settings Panel Specific Styles */
 .settings-panel {
     background: #ffffff;
     border-radius: 12px;
     padding: 25px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     overflow:none;
 }
 
@@ -406,4 +408,12 @@ body.dark-mode .cell {
 
 .dark-mode .reset-leaderboard-btn {
     background: #c82333;
+}
+.play-btn {
+    background: #34c759 !important;
+    order: -1; /* Make it first in the flex order */
+}
+
+.play-btn:hover {
+    background: #2daa4d !important;
 }

@@ -10,12 +10,17 @@ export function initPanels() {
     const resetLeaderboardBtn = document.querySelector('.reset-leaderboard-btn');
 
     // Panel Toggle Functionality
-    if (settingsBtn && leaderboardsBtn) {
+    if (settingsPanel && leaderboardsPanel) {
+        // Show settings by default
+        settingsPanel.classList.remove('hidden');
+        leaderboardsPanel.classList.add('hidden');
+    
+        // Button handlers
         settingsBtn.addEventListener('click', () => {
             leaderboardsPanel.classList.add('hidden');
             settingsPanel.classList.remove('hidden');
         });
-
+    
         leaderboardsBtn.addEventListener('click', () => {
             settingsPanel.classList.add('hidden');
             leaderboardsPanel.classList.remove('hidden');
