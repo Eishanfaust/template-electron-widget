@@ -31,10 +31,10 @@ function createWindow() {
 
   // Load index.html with proper path handling
   win.loadFile(path.join(__dirname, 'index.html'))
-  
+  win.webContents.openDevTools()
   // Open DevTools only in development
   if (process.env.NODE_ENV === 'development') {
-    win.webContents.openDevTools()
+  
   }
 }
 

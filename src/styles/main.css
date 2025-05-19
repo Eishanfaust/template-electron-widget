@@ -1,4 +1,3 @@
-
 :root {
     --titlebar-height: 30px;
 }
@@ -7,27 +6,43 @@ body {
     margin: 0;
     height: calc(100vh - var(--titlebar-height));
     display: grid;
-    grid-template-rows: 90% 10%; /* Updated split */
+    grid-template-columns: 70% 30%;
     overflow: hidden;
+    background: #ffffff;
 }
 
-.middle-section {
+.game-container {
+    padding: 20px;
     position: relative;
-    width: 100%;
-    height: 100%;
-    padding: 10px;
-    box-sizing: border-box;
 }
 
-.bottom-section {
-    border-top: 1px solid #e0e0e0;
+.side-panel {
+    padding: 20px;
     background: #f8f9fa;
-    z-index: 2;
+    border-left: 1px solid #e0e0e0;
+}
+.side-panel.active {
+    border-left-color: #e0e0e0;
+}
+
+.controls {
+    height: 30px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    padding: 10px 0;
+    margin-top: 10px;
+}
+
+.game-board-wrapper {
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 8px; /* Reduced padding */
 }
+
+
+
 /* macOS adjustments */
 @media (-webkit-platform: macos) {
     :root {

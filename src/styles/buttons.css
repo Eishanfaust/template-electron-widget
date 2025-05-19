@@ -1,13 +1,12 @@
 /* buttons.css */
+
+/* Update button order in controls */
 .controls {
     display: flex;
     gap: 10px;
     justify-content: center;
-    align-items: center;
-    height: 100%;
-    padding: 0 15px;
+    flex-wrap: wrap;
 }
-
 .game-btn {
     padding: 8px 16px;
     border-radius: 6px;
@@ -34,4 +33,8 @@
 
 .hidden {
     display: none !important;
+}
+.skip-btn {
+    background: #ff9500;
+    order: 3; /* Positions between Leaderboards and Reset */
 }

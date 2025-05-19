@@ -7,20 +7,44 @@
         <link rel="stylesheet" href="src/styles/main.css">
         <link rel="stylesheet" href="src/styles/gameboard.css">
         <link rel="stylesheet" href="src/styles/buttons.css">
+        <link rel="stylesheet" href="src/styles/panel.css">
         <script type="module" src="src/scripts/renderer.js"></script>
     </head>
+
     <body>
-        <div class="middle-section">
-            <div class="game-board">
-                <!-- Game cells injected here -->
-            </div>
-            <div class="settings-panel hidden">
-                <!-- Settings content -->
-            </div>
+        <div class="game-container">
+            <div class="game-board-wrapper"></div>
+            <div class="controls"></div>
         </div>
-        <div class="bottom-section">
-            <div class="controls">
-                <!-- Buttons injected here -->
+        <div class="side-panel">
+            <!-- Settings Panel -->
+            <div class="settings-panel hidden">
+                <h2>Game Settings</h2>
+                <div class="settings-group">
+                    <label>Game Mode:</label>
+                    <select id="gameMode" class="settings-select">
+                        <option value="single">Single Player</option>
+                        <option value="multi">Multiplayer</option>
+                    </select>
+                </div>
+                
+                <div class="settings-group multiplayer-only" style="display: none;">
+                    <label>Number of Sets:</label>
+                    <input type="number" id="numSets" class="settings-input" min="1" max="5" value="3">
+                </div>
+        
+                <div class="settings-group">
+                    <label>Theme:</label>
+                    <div class="theme-switch">
+                        <button class="theme-btn light active">☀️ Light</button>
+                        <button class="theme-btn dark">🌙 Dark</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Leaderboards Panel -->
+            <div class="leaderboards-panel hidden">
+                <h2>Leaderboards</h2>
+                <!-- Leaderboards content -->
             </div>
         </div>
     </body>
