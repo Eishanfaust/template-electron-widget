@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Game Application</title>
+        <title>Arkai Aloocross</title>
         <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';">
         <link rel="stylesheet" href="src/styles/main.css">
         <link rel="stylesheet" href="src/styles/gameboard.css">
@@ -43,8 +43,27 @@
             </div>
             <!-- Leaderboards Panel -->
             <div class="leaderboards-panel hidden">
-                <h2>Leaderboards</h2>
-                <!-- Leaderboards content -->
+                <div class="leaderboard-header">
+                    <h2>🏆 Leaderboard</h2>
+                </div>
+                <div class="leaderboard-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Player</th>
+                                <th>Rounds</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leaderboardBody">
+                            <tr class="no-data">
+                                <td colspan="4">No records found</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="leaderboard-footer">
+                        <button class="reset-leaderboard-btn">Reset Leaderboard</button>
+                    </div>
+                </div>
             </div>
         </div>
     </body>
