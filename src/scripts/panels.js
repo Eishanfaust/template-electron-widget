@@ -140,10 +140,10 @@ export function initPanels() {
     });
     
     // Settings Confirmation Modal Handlers
-    const concedeBtn = document.querySelector('.concede-btn');
+    const concedeConfirmBtn = document.querySelector('.confirm-concede-btn');
     const continueBtn = document.querySelector('.continue-btn');
     
-    concedeBtn?.addEventListener('click', () => {
+    concedeConfirmBtn?.addEventListener('click', () => {
         settingsConfirmModal.classList.add('hidden');
         
         // Clear the game board cells

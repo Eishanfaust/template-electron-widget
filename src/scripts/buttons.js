@@ -4,60 +4,42 @@ export function initButtons() {
         <button class="game-btn settings-btn">⚙️ Settings</button>
         <button class="game-btn leaderboards-btn">🏆 Leaderboards</button>
         <button class="game-btn rules-btn">📜 Rules</button>
-        <button class="game-btn reset-btn">🔄 Reset</button>
+        <button class="game-btn open-concede-modal-btn">🏳️ Concede</button>
     `;
-    
-    // Add event listeners for buttons that manipulate the UI
-    const settingsBtn = controls.querySelector('.settings-btn');
-    settingsBtn?.addEventListener('click', () => {
-        // Check if game is in progress
+
+    // Shared modal handling function
+    const handleGameInterruption = (isConcede = false) => {
         const gameInfoPanel = document.querySelector('.game-info-panel');
-        const settingsPanel = document.querySelector('.settings-panel');
-        
-        if (!gameInfoPanel?.classList.contains('hidden')) {
-            // Game is in progress, show confirmation modal
-            const settingsConfirmModal = document.getElementById('settingsConfirmModal');
-            settingsConfirmModal?.classList.remove('hidden');
-        } else {
-            // No game in progress, toggle settings panel normally
-            settingsPanel?.classList.remove('hidden');
-            gameInfoPanel?.classList.add('hidden');
-        }
-    });
-    
-    // Reset button functionality (enhanced to handle both game modes)
-    const resetBtn = controls.querySelector('.reset-btn');
-    resetBtn?.addEventListener('click', () => {
-        // Clear the game board cells
-        document.querySelectorAll('.cell').forEach(cell => {
-            cell.textContent = '';
-            cell.classList.remove('x-mark', 'o-mark', 'red-mark', 'blue-mark');
-        });
-        
-    // Add event listeners for buttons that manipulate the UI
-    const settingsBtn = controls.querySelector('.settings-btn');
-    settingsBtn?.addEventListener('click', () => {
-        // Check if game is in progress
-        const gameInfoPanel = document.querySelector('.game-info-panel');
-        const settingsPanel = document.querySelector('.settings-panel');
-        
-        if (!gameInfoPanel?.classList.contains('hidden')) {
-            // Game is in progress, show confirmation modal
-            const settingsConfirmModal = document.getElementById('settingsConfirmModal');
-            settingsConfirmModal?.classList.remove('hidden');
-        } else {
-            // No game in progress, toggle settings panel normally
-            settingsPanel?.classList.remove('hidden');
-            gameInfoPanel?.classList.add('hidden');
-        }
-    });
-    
-    // Concede game button functionality
-    const concedeBtn = controls.querySelector('.concede-btn');
-    concedeBtn?.addEventListener('click', () => {
-        // Show confirmation dialog
         const settingsConfirmModal = document.getElementById('settingsConfirmModal');
-        if (settingsConfirmModal) {
+        
+        if (!gameInfoPanel?.classList.contains('hidden')) {
+            // Update modal content
+            const modalHeader = settingsConfirmModal.querySelector('h2');
+            const modalBody = settingsConfirmModal.querySelector('.modal-body p');
+            
+            if (isConcede) {
+                modalHeader.textContent = '⚠️ Concede Game';
+                modalBody.textContent = 'Are you sure you want to concede the current game?';
+            } else {
+                modalHeader.textContent = '⚠️ Game Interrupted';
+                modalBody.textContent = 'Are you sure you want to interrupt the current game?';
+            }
+            
             settingsConfirmModal.classList.remove('hidden');
-        }})
-    })}
+        } else if (!isConcede) {
+            document.querySelector('.settings-panel')?.classList.remove('hidden');
+        }
+    };
+
+    // Event listeners
+    document.querySelector('.settings-btn')?.addEventListener('click', () => handleGameInterruption(false));
+    document.querySelector('.open-concede-modal-btn')?.addEventListener('click', () => handleGameInterruption(true));
+
+    // Connect button styling
+    const connectBtn = document.querySelector('.connect-btn');
+    if (connectBtn) {
+        connectBtn.style.background = '#d32f2f';
+        connectBtn.style.color = 'white';
+        connectBtn.style.fontWeight = 'bold';
+    }
+}

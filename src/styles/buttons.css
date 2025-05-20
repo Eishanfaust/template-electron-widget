@@ -1,108 +1,98 @@
 /* buttons.css */
-
-/* Update button order in controls */
-.controls {
+:root {
+    --primary-blue: #007aff;
+    --success-green: #34c759;
+    --danger-red: #ff3b30;
+    --warning-orange: #ff9500;
+    --dark-maroon: #800000;
+    --text-white: #fff;
+    --button-radius: 6px;
+    --button-padding: 8px 16px;
+    --transition-speed: 0.2s;
+  }
+  
+  .controls {
     display: flex;
     gap: 10px;
     justify-content: center;
     flex-wrap: wrap;
     padding: 10px 0;
-}
-
-.game-btn {
-    padding: 8px 16px;
-    border-radius: 6px;
+  }
+  
+  /* Base button styles */
+  [class$="-btn"]:not(.theme-btn) {
+    padding: var(--button-padding);
+    border-radius: var(--button-radius);
     font-size: 0.9em;
     flex-shrink: 0;
     cursor: pointer;
     border: none;
-    color: white;
-    transition: all 0.2s ease;
-}
-
-.game-btn:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
-}
-
-.settings-btn {
-    background: #6c757d;
-}
-
-.concede-btn {
-    background: #ff3b30;
-}
-
-.leaderboards-btn {
-    background: #34c759;
-}
-
-.rules-btn {
-    background: #007aff;
-}
-
-.play-btn {
-    background: #34c759 !important;
-    order: -1; /* Make it first in the flex order */
+    color: var(--text-white);
+    transition: all var(--transition-speed) ease;
+  }
+  
+  /* Button variants */
+  .settings-btn { background: #6c757d }
+  .confirm-concede-btn { background: var(--danger-red) }
+  .leaderboards-btn { background: var(--success-green) }
+  .rules-btn { background: var(--primary-blue) }
+  .skip-btn { background: var(--warning-orange) }
+  
+  /* Special buttons */
+  .play-btn {
+    background: var(--success-green);
+    order: -1;
     margin-top: 15px;
     padding: 10px 20px;
     font-size: 1em;
-    display: block;
     width: 100%;
-}
-
-.play-btn:hover {
-    background: #2daa4d !important;
-}
-
-.skip-btn {
-    background: #ff9500;
-    order: 3; /* Positions between Leaderboards and Reset */
-}
-
-/* Focus state for accessibility */
-.game-btn:focus {
-    outline: 2px solid #007aff;
-    outline-offset: 2px;
-}
-
-/* Dark mode adjustments */
-.dark-mode .game-btn {
-    opacity: 0.95;
-}
-
-.dark-mode .settings-btn {
-    background: #495057;
-}
-
-.dark-mode .play-btn {
-    background: #28a745 !important;
-}
-
-.dark-mode .play-btn:hover {
-    background: #218838 !important;
-}
-
-/* Find Match button - maroon with white text */
-.connect-btn {
-    background: #800000 !important;
-    color: white !important;
+  }
+  
+  .connect-btn {
+    background: var(--dark-maroon);
     width: 100%;
     margin-top: 15px;
-}
-
-.connect-btn:hover {
-    background: #600000 !important;
-}
-
-.dark-mode .connect-btn {
-    background: #8B0000 !important;
-}
-
-.dark-mode .connect-btn:hover {
-    background: #700000 !important;
-}
-
-.hidden {
+  }
+  
+  /* Interactive states */
+  button[class$="-btn"]:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  }
+  
+  button[class$="-btn"]:focus {
+    outline: 2px solid var(--primary-blue);
+    outline-offset: 2px;
+  }
+  
+  /* Dark theme */
+  .dark-mode {
+    --button-bg: #495057;
+    --success-green: #28a745;
+    --dark-maroon: #8B0000;
+  }
+  
+  .dark-mode .settings-btn { background: var(--button-bg) }
+  .dark-mode .connect-btn { background: var(--dark-maroon) }
+  .dark-mode .play-btn { background: var(--success-green) }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    :root {
+      --button-padding: 6px 12px;
+    }
+    
+    .controls {
+      gap: 8px;
+      padding: 8px 0;
+    }
+    
+    .play-btn {
+      padding: 8px 16px;
+      font-size: 0.9em;
+    }
+  }
+  
+  .hidden {
     display: none !important;
-}
+  }
