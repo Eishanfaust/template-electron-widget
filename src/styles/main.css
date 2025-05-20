@@ -1,5 +1,16 @@
 :root {
     --titlebar-height: 30px;
+    --primary-color: #007aff;
+    --secondary-color: #6c757d;
+    --success-color: #34c759;
+    --danger-color: #ff3b30;
+    --warning-color: #ff9500;
+    --light-bg: #ffffff;
+    --light-panel-bg: #f8f9fa;
+    --light-border: #e0e0e0;
+    --dark-bg: #1a202c;
+    --dark-panel-bg: #2d3748;
+    --dark-border: #4a5568;
 }
 
 body {
@@ -8,21 +19,29 @@ body {
     display: grid;
     grid-template-columns: 70% 30%;
     overflow: hidden;
-    background: #ffffff;
+    background: var(--light-bg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    transition: background-color 0.3s ease;
 }
 
 .game-container {
     padding: 20px;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .side-panel {
     padding: 20px;
-    background: #f8f9fa;
-    border-left: 1px solid #e0e0e0;
+    background: var(--light-panel-bg);
+    border-left: 1px solid var(--light-border);
+    overflow: none;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
+
 .side-panel.active {
-    border-left-color: #e0e0e0;
+    border-left-color: var(--light-border);
 }
 
 .controls {
@@ -31,7 +50,8 @@ body {
     gap: 10px;
     justify-content: center;
     padding: 10px 0;
-    margin-top: 10px;
+    margin-top: 20px;
+    width: 100%;
 }
 
 .game-board-wrapper {
@@ -39,9 +59,45 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 20px;
 }
 
+/* Modal overlay for dialogs */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
 
+.modal.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Dark mode adjustments */
+body.dark-mode {
+    background: var(--dark-bg);
+    color: #e2e8f0;
+}
+
+body.dark-mode .side-panel {
+    background: var(--dark-panel-bg);
+    border-left-color: var(--dark-border);
+}
+
+body.dark-mode .game-container {
+    background: var(--dark-bg);
+}
 
 /* macOS adjustments */
 @media (-webkit-platform: macos) {
@@ -65,7 +121,37 @@ body {
     }
 }
 
-.hidden {
-    display: none;
+/* Responsive design */
+@media (max-width: 1024px) {
+    body {
+        grid-template-columns: 65% 35%;
+    }
 }
 
+@media (max-width: 768px) {
+    body {
+        grid-template-columns: 100%;
+        grid-template-rows: 1fr auto;
+        height: auto;
+        min-height: calc(100vh - var(--titlebar-height));
+    }
+    
+    .side-panel {
+        border-left: none;
+        border-top: 1px solid var(--light-border);
+        padding: 15px;
+    }
+    
+    body.dark-mode .side-panel {
+        border-top-color: var(--dark-border);
+    }
+    
+    .game-board {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+.hidden {
+    display: none !important;
+}
